@@ -1,0 +1,180 @@
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/node_view_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary">
+
+    <com.settle.compoundcontrol.CommandEditorView
+        android:id="@+id/command_editor"
+        style="@style/Basic"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/border_width"
+        android:background="@color/colorBackground"
+        android:gravity="top"
+        android:inputType="textFilter|textMultiLine|textNoSuggestions"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/node_view_state_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/node_view_state_layout"
+        android:layout_width="48dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="@dimen/border_width"
+        android:layout_marginEnd="@dimen/border_width"
+        android:layout_marginTop="@dimen/border_width"
+        android:background="#000000"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/accLabel"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:text="@string/acc_label"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/accText"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/bakLabel"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:text="@string/bak_label"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/bakText"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/lastLabel"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:text="@string/last_label"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/lastText"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/modeLabel"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:text="@string/mode_label"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/modeText"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/idleLabel"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:gravity="center_vertical"
+            android:text="@string/idle_label"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textStyle="bold"
+            android:typeface="monospace" />
+
+        <TextView
+            android:id="@+id/idleText"
+            style="@style/Basic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="monospace"
+            android:maxLines="1"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:typeface="monospace" />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

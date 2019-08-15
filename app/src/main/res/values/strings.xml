@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">CompoundControl</string>
+    <string name="level_tile_default">#</string>
+    <string name="start">Start</string>
+    <string name="settings">Settings</string>
+    <string name="title_default">Title</string>
+    <string name="description_default">Description</string>
+
+    <!-- node view -->
+    <string name="acc_label">ACC</string>
+    <string name="bak_label">BAK</string>
+    <string name="last_label">LAST</string>
+    <string name="mode_label">MODE</string>
+    <string name="idle_label">IDLE</string>
+    <string name="commands_hint">NO COMMANDS</string>
+    <string name="empty_port">999</string>
+
+    <!-- port view -->
+    <string name="port_arrow_description">Port Arrow</string>
+    <string name="port_path">M 4 10 V 14 H 14 V 17 L 20 12 L 14 7 V 10 z</string>
+
+    <!-- button view -->
+    <string name="play_description">Play</string>
+    <string name="step_description">Step Forward</string>
+    <string name="stop_description">Stop</string>
+    <string name="restart_description">Restart</string>
+
+    <!-- IO Columns -->
+    <string name="io_column_header_template">TMP</string>
+    <string name="input_column_name">INP</string>
+    <string name="expected_column_name">EXP</string>
+    <string name="output_column_name">OUT</string>
+    <string name="title_activity_game_grid">GameGrid</string>
+    <string name="stack_node_text">Stack Node</string>
+
+
+    <!-- keyboard buttons -->
+    <string name="nop">NOP</string>
+    <string name="neg">NEG</string>
+    <string name="sav">SAV</string>
+    <string name="swp">SWP</string>
+    <string name="add">ADD</string>
+    <string name="sub">SUB</string>
+    <string name="mov">MOV</string>
+    <string name="nil">NIL</string>
+    <string name="left">LEFT</string>
+    <string name="up">UP</string>
+    <string name="down">DOWN</string>
+    <string name="right">RIGHT</string>
+    <string name="any">ANY</string>
+    <string name="last">LAST</string>
+    <string name="jmp">JMP</string>
+    <string name="jez">JEZ</string>
+    <string name="jnz">JNZ</string>
+    <string name="jgz">JGZ</string>
+    <string name="jlz">JLZ</string>
+    <string name="jro">JRO</string>
+
+</resources>
