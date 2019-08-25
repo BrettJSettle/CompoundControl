@@ -10,17 +10,16 @@ import java.io.Serializable;
 
 class IOColumn implements Serializable{
     private int column;
-    private String title;
     private int[] values;
 
     public IOColumn(){}
 
-    public IOColumn(int column, int[] values) {
+    IOColumn(int column, int[] values) {
         this.column = column;
         this.values = values;
     }
 
-    public int getColumn() {
+    int getColumn() {
         return column;
     }
 
@@ -28,7 +27,7 @@ class IOColumn implements Serializable{
         this.column = column;
     }
 
-    public int[] getValues() {
+    int[] getValues() {
         return values;
     }
 
@@ -42,12 +41,11 @@ class NodeState implements Serializable{
         DISABLED, COMMAND, STACK
     }
 
-    private Type type;
+    private Type type = Type.COMMAND;
     private int row;
     private int column;
 
     public NodeState() {
-
     }
 
     public NodeState(int row, int column, Type type) {
@@ -60,7 +58,7 @@ class NodeState implements Serializable{
         this.row = row;
     }
 
-    public int getRow() {
+    int getRow() {
         return row;
     }
 
@@ -68,7 +66,7 @@ class NodeState implements Serializable{
         this.column = column;
     }
 
-    public int getColumn() {
+    int getColumn() {
         return column;
     }
 
@@ -76,17 +74,24 @@ class NodeState implements Serializable{
         this.type = nodeType;
     }
 
-    public Type getType() {
+    Type getType() {
         return type;
     }
 }
 
 
 public class LevelState implements Serializable {
-    private int rows, columns;
+    private int rows = 3, columns = 4;
     private IOColumn[] input, output;
     private NodeState[] nodes;
 
+    public LevelState() {
+    }
+
+    LevelState(int rows, int columns) {
+        this.rows = rows;
+        this.columns = columns;
+    }
     static LevelState load(InputStream fis) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         return mapper.readValue(fis, LevelState.class);
@@ -101,40 +106,38 @@ public class LevelState implements Serializable {
         this.rows = rows;
     }
 
-    public int getRows() {
+    int getRows() {
         return rows;
     }
 
-
-    public int getColumns() {
+    int getColumns() {
         return columns;
-    }
-
-    public NodeState[] getNodes() {
-        return nodes;
     }
 
     private void setColumns(int columns) {
         this.columns = columns;
     }
 
+    NodeState[] getNodes() {
+        return nodes;
+    }
     public void setNodes(NodeState[] nodes) {
         this.nodes = nodes;
     }
 
-    public IOColumn[] getInput() {
+    IOColumn[] getInput() {
         return input;
     }
 
-    public IOColumn[] getOutput() {
-        return output;
-    }
-
-    public void setInput(IOColumn[] input) {
+    void setInput(IOColumn[] input) {
         this.input = input;
     }
 
-    public void setOutput(IOColumn[] output) {
+    IOColumn[] getOutput() {
+        return output;
+    }
+
+    void setOutput(IOColumn[] output) {
         this.output = output;
     }
 

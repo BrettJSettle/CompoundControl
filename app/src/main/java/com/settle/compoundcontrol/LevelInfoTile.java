@@ -1,10 +1,12 @@
 package com.settle.compoundcontrol;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
+@SuppressLint("ViewConstructor")
 public class LevelInfoTile extends FrameLayout {
     private LevelInfo level;
 

@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="CommandEditorView">
+        <attr name="lines" format="integer" />
+    </declare-styleable>
+</resources>

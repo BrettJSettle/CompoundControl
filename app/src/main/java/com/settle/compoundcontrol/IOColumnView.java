@@ -1,53 +1,60 @@
 package com.settle.compoundcontrol;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.drawable.Drawable;
-import android.text.TextPaint;
 import android.util.AttributeSet;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.TableRow;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class IOColumnView extends TableLayout {
+public class IOColumnView extends NodeView {
+    private static final IOColumn SAMPLE_DATA = new IOColumn(4, new int[]{1, 2, 3});
+    LinearLayout table;
+    ScrollView scroll_view;
     ArrayList<TextView> rows = new ArrayList<>();
     TextView titleView;
 
     public IOColumnView(Context context) {
         super(context);
-        init(null);
+        init("SAMPLE", SAMPLE_DATA);
     }
 
     public IOColumnView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init(attrs);
+        init("SAMPLE", SAMPLE_DATA);
     }
 
-    private void init(AttributeSet attrs) {
+    public IOColumnView(Context context, String name, IOColumn column) {
+        super(context);
+        init(name, column);
+    }
+
+    private void init(String name, IOColumn column) {
         LayoutInflater inflater = (LayoutInflater) getContext()
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.iocolumn_view, this);
         titleView = findViewById(R.id.column_title);
-        setBackgroundColor(Color.BLUE);
+        table = findViewById(R.id.io_column_table);
+        scroll_view = findViewById(R.id.iocolumn_scroll_view);
+        setName(name);
+        setData(column);
     }
 
-    public void setData(String title, IOColumn data){
-        titleView.setText(title);
-        for (int val :data.getValues()){
-            TableRow row = new TableRow(getContext());
-            row.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+    private void setName(String name) {
+        titleView.setText(name);
+    }
+
+    public void setData(IOColumn data) {
+        table.removeAllViews();
+        for (int val : data.getValues()) {
             TextView tv = new TextView(getContext());
+            tv.setGravity(Gravity.CENTER);
             tv.setText(String.format(Locale.getDefault(), "%s", val));
-            row.addView(tv, 0);
-            addView(row, new TableLayout.LayoutParams(LayoutParams.WRAP_CONTENT, TableLayout.LayoutParams.WRAP_CONTENT));
+            table.addView(tv);
             rows.add(tv);
         }
     }

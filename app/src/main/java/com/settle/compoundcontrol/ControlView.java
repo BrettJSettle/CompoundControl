@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 public class ControlView extends LinearLayout implements View.OnClickListener{
     private ImageButton playButton, stepPauseButton, stopButton;
-    private boolean running = false;
+    private ControlListener listener;
 
     public ControlView(Context context) {
         super(context);
@@ -42,25 +42,11 @@ public class ControlView extends LinearLayout implements View.OnClickListener{
         stopButton.setOnClickListener(this);
     }
 
-    private void play(){
-        setRunning(true);
+    public void setControlListener(ControlListener listener) {
+        this.listener = listener;
     }
 
-    private void pause(){
-        setRunning(false);
-    }
-
-    private void stop(){
-        setRunning(false);
-    }
-
-    private void step(){
-
-    }
-
-    private void setRunning(boolean running){
-        this.running = running;
-
+    public void setRunning(boolean running) {
         Drawable step_pause = running ? getResources().getDrawable(R.drawable.pause_icon, getResources().newTheme()) :
                 getResources().getDrawable(R.drawable.step_icon, getResources().newTheme());
         stepPauseButton.setImageDrawable(step_pause);
@@ -69,15 +55,11 @@ public class ControlView extends LinearLayout implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if (v.equals(playButton)){
-            play();
+            listener.playPressed();
         }else if (v.equals(stepPauseButton)){
-            if (running){
-                pause();
-            }else {
-                step();
-            }
+            listener.stepPressed();
         }else if (v.equals(stopButton)){
-            stop();
+            listener.stopPressed();
         }
     }
 

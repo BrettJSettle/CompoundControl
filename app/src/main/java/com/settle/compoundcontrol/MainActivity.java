@@ -2,8 +2,8 @@ package com.settle.compoundcontrol;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.JsonReader;
 import android.view.View;
 import android.widget.AbsListView;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        startLevel(levels[3]);
+        startLevel(levels[1]);
     }
 
     private void startLevel(LevelInfo info){

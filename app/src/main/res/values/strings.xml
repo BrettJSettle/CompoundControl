@@ -55,5 +55,6 @@
     <string name="jgz">JGZ</string>
     <string name="jlz">JLZ</string>
     <string name="jro">JRO</string>
+    <string name="io_column_title">COLUMN</string>
 
 </resources>

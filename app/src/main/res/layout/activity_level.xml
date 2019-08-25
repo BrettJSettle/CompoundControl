@@ -15,13 +15,11 @@
         android:focusableInTouchMode="true"
         android:scrollbars="horizontal|vertical"
         app:hasClickableChildren="true"
-        app:maxZoom="5.0">
-
-    </com.otaliastudios.zoom.ZoomLayout>
+        app:maxZoom="5.0" />
 
 
     <com.settle.compoundcontrol.ControlView
-        android:id="@+id/buttonView"
+        android:id="@+id/control_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom" />
