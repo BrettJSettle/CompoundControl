@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+
+import com.settle.compoundcontrol.R;
+import com.settle.compoundcontrol.level.event.ControlListener;
 
 
 public class ControlView extends LinearLayout implements View.OnClickListener{

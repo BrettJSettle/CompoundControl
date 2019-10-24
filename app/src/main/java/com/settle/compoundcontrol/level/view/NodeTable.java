@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.view;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -10,11 +10,23 @@ import android.widget.Space;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 
+import com.settle.compoundcontrol.level.node.command.view.CommandNodeView;
+import com.settle.compoundcontrol.level.node.iocolumn.view.IOColumnView;
+import com.settle.compoundcontrol.level.node.view.NodeView;
+import com.settle.compoundcontrol.level.port.BidirectionalPortView;
+import com.settle.compoundcontrol.level.state.IOColumn;
+import com.settle.compoundcontrol.level.state.LevelState;
+import com.settle.compoundcontrol.level.state.NodeState;
+
+import java.util.HashSet;
+import java.util.Set;
+
 
 public class NodeTable extends TableLayout {
     private static final TableRow.LayoutParams ROW_PARAMS = new TableRow.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT);
     private static final TableRow.LayoutParams VIEW_PARAMS = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT, TableRow.LayoutParams.WRAP_CONTENT);
 
+    private HashSet<NodeView> nodeViews;
     protected NodeView[][] nodeGrid;
     protected LevelState state;
 
@@ -37,7 +49,8 @@ public class NodeTable extends TableLayout {
 
     protected void init(LevelState state) {
         this.state = state;
-        setPadding(100, 100, 100, 100);
+        nodeViews = new HashSet<>();
+        setPadding(1000, 1000, 1000, 1000);
 
         // Make node grid row by row
         makeNodeViews();
@@ -47,6 +60,10 @@ public class NodeTable extends TableLayout {
         addIORow(state.getInput(), true);
         // Make output row
         addIORow(state.getOutput(), false);
+    }
+
+    public Set<NodeView> getNodeViews() {
+        return nodeViews;
     }
 
     private void makeNodeViews() {
@@ -60,7 +77,6 @@ public class NodeTable extends TableLayout {
             for (int c = 0; c < state.getColumns(); c++) {
                 if (nodeGrid[r][c] == null) {
                     nodeGrid[r][c] = makeNodeView(null);
-//                    ((CommandNodeView) nodeGrid[r][c]).setText(0, r + ", " + c);
                 }
                 // Add ports to top and left nodes
                 if (r > 0) {
@@ -74,9 +90,7 @@ public class NodeTable extends TableLayout {
     }
 
     private BidirectionalPortView makePort(NodeView a, NodeView b, int port_directions) {
-        BidirectionalPortView port = new BidirectionalPortView(getContext(), a, b, port_directions);
-        port.setId(View.generateViewId());
-        return port;
+        return new BidirectionalPortView(getContext(), a, b, port_directions);
     }
 
     private void makeSpecialNodeViews(NodeState[] nodes) {
@@ -105,11 +119,11 @@ public class NodeTable extends TableLayout {
                     view = new CommandNodeView(getContext());
             }
         }
-        view.setId(View.generateViewId());
         int color = Color.rgb((int) (255 * Math.random()),
                 (int) (255 * Math.random()),
                 (int) (255 * Math.random()));
         view.setBackgroundColor(color);
+        nodeViews.add(view);
         return view;
     }
 
@@ -152,6 +166,7 @@ public class NodeTable extends TableLayout {
         for (int i = 0; i < columns.length; i++) {
             IOColumnView view = new IOColumnView(getContext(), prefix + i, columns[i]);
             views[columns[i].getColumn()] = view;
+            nodeViews.add(view);
         }
 
 

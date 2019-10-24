@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.event;
 
 public interface ControlListener {
     void playPressed();

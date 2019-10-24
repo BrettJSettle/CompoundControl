@@ -1,26 +1,26 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.state;
 
-class LevelInfo {
+public class LevelInfo {
 
     private int num;
     private String title;
     private String description;
 
-    LevelInfo(int num, String title, String description){
+    public LevelInfo(int num, String title, String description) {
         this.num = num;
         this.title = title;
         this.description = description;
     }
 
-    int getLevelNum(){
+    public int getLevelNum() {
         return num;
     }
 
-    String getTitle(){
+    public String getTitle() {
         return title;
     }
 
-    String getDescription(){
+    public String getDescription() {
         return description;
     }
 }

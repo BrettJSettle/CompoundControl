@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.port;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -7,6 +7,8 @@ import android.graphics.drawable.RotateDrawable;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import android.view.Gravity;
+
+import com.settle.compoundcontrol.R;
 
 import java.util.Locale;
 

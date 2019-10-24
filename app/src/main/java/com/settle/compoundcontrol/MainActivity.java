@@ -13,6 +13,11 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.settle.compoundcontrol.level.state.LevelInfo;
+import com.settle.compoundcontrol.level.state.LevelState;
+import com.settle.compoundcontrol.level_select.impl.LevelAdapter;
+import com.settle.compoundcontrol.level_select.view.LevelInfoTile;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;

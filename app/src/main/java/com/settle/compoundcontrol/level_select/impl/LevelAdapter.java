@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level_select.impl;
 
 import android.content.Context;
 import android.view.View;
@@ -6,12 +6,16 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.settle.compoundcontrol.R;
+import com.settle.compoundcontrol.level.state.LevelInfo;
+import com.settle.compoundcontrol.level_select.view.LevelInfoTile;
+
 public class LevelAdapter extends BaseAdapter {
 
     private LevelInfo[] levels;
     private Context context;
 
-    LevelAdapter(Context context, LevelInfo[] levels) {
+    public LevelAdapter(Context context, LevelInfo[] levels) {
         super();
         this.context = context;
         this.levels = levels;

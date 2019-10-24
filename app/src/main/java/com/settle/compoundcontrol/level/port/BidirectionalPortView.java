@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol;
+package com.settle.compoundcontrol.level.port;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -9,6 +9,9 @@ import android.util.SparseArray;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.LinearLayout;
+
+import com.settle.compoundcontrol.R;
+import com.settle.compoundcontrol.level.node.view.NodeView;
 
 public class BidirectionalPortView extends LinearLayout {
     PortView first, second;
