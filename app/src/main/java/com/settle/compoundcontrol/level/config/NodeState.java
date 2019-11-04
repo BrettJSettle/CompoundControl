@@ -1,11 +1,13 @@
-package com.settle.compoundcontrol.level.state;
+package com.settle.compoundcontrol.level.config;
 
 import java.io.Serializable;
 
 public class NodeState implements Serializable {
+    public static final int DEFAULT_NUM_LINES = 10;
     private Type type = Type.COMMAND;
     private int row;
     private int column;
+    private int lines = DEFAULT_NUM_LINES;
 
     public NodeState() {
     }
@@ -38,6 +40,14 @@ public class NodeState implements Serializable {
 
     public void setType(Type nodeType) {
         this.type = nodeType;
+    }
+
+    public int getLines() {
+        return lines;
+    }
+
+    public void setLines(int lines) {
+        this.lines = lines;
     }
 
     public enum Type {

@@ -78,6 +78,10 @@ public class CommandLineState implements Cloneable {
         terms.clear();
     }
 
+    public boolean isEmpty() {
+        return terms.isEmpty() && label == null && !comment;
+    }
+
     public boolean isComment() {
         return comment;
     }

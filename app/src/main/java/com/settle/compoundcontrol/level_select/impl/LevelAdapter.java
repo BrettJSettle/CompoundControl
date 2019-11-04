@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.settle.compoundcontrol.R;
-import com.settle.compoundcontrol.level.state.LevelInfo;
 import com.settle.compoundcontrol.level_select.view.LevelInfoTile;
 
 public class LevelAdapter extends BaseAdapter {

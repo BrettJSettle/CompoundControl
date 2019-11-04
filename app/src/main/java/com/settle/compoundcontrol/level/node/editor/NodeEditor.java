@@ -42,7 +42,7 @@ public class NodeEditor extends Fragment implements View.OnClickListener {
 
     public void closeFragment(boolean save) {
         if (save) {
-            callback.saveStates(textView.getStates());
+            callback.saveLines(textView.getStates());
         }
         callback.closeFragment();
     }

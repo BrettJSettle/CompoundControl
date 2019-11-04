@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:layout_margin="@dimen/border_width"
         android:layout_weight="1"
+        android:text="012345678901234567\n1\n2\n3\n4\n5\n6\n7\n8\n9\n0\n1\n2\n3\n4"
         android:background="@color/colorBackground"
         android:textColor="@android:color/white" />
 

@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol.level.state;
+package com.settle.compoundcontrol.level.config;
 
 import java.io.Serializable;
 

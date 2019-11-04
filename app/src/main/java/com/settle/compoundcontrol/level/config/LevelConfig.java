@@ -1,4 +1,4 @@
-package com.settle.compoundcontrol.level.state;
+package com.settle.compoundcontrol.level.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -8,66 +8,63 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
 
-public class LevelState implements Serializable {
-    private int rows = 3, columns = 4;
-    private IOColumn[] input, output;
-    private NodeState[] nodes;
+public class LevelConfig implements Serializable {
+    protected int rows = 3, columns = 4;
+    protected IOColumn[] input, output;
+    protected NodeState[] nodes;
 
-    public LevelState() {
+    protected LevelConfig() {
+
     }
 
-    public LevelState(int rows, int columns) {
+    public LevelConfig(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
     }
 
-    public static LevelState load(InputStream fis) throws IOException {
+    public static LevelConfig load(InputStream fis) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        return mapper.readValue(fis, LevelState.class);
-    }
-
-    public void save(String path) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(new File(path), this);
+        return mapper.readValue(fis, LevelConfig.class);
     }
 
     public int getRows() {
         return rows;
     }
 
-    public void setRows(int rows) {
-        this.rows = rows;
-    }
-
     public int getColumns() {
         return columns;
-    }
-
-    public void setColumns(int columns) {
-        this.columns = columns;
-    }
-
-    public NodeState[] getNodes() {
-        return nodes;
-    }
-    public void setNodes(NodeState[] nodes) {
-        this.nodes = nodes;
     }
 
     public IOColumn[] getInput() {
         return input;
     }
 
-    public void setInput(IOColumn[] input) {
-        this.input = input;
-    }
-
     public IOColumn[] getOutput() {
         return output;
     }
 
+    public NodeState[] getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(NodeState[] nodes) {
+        this.nodes = nodes;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
     public void setOutput(IOColumn[] output) {
         this.output = output;
+    }
+
+    public void setInput(IOColumn[] input) {
+        this.input = input;
     }
 
     public void print() {
@@ -83,5 +80,10 @@ public class LevelState implements Serializable {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
+    }
+
+    public void save(String path) throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(path), this);
     }
 }

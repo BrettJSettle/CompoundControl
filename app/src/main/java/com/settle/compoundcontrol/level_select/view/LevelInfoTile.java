@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.widget.FrameLayout;
 
 import com.settle.compoundcontrol.R;
-import com.settle.compoundcontrol.level.state.LevelInfo;
+import com.settle.compoundcontrol.level_select.impl.LevelInfo;
 
 @SuppressLint("ViewConstructor")
 public class LevelInfoTile extends FrameLayout {

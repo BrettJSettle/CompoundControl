@@ -13,22 +13,19 @@ import android.widget.GridView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.settle.compoundcontrol.level.state.LevelInfo;
-import com.settle.compoundcontrol.level.state.LevelState;
+import com.settle.compoundcontrol.level.config.LevelConfig;
 import com.settle.compoundcontrol.level_select.impl.LevelAdapter;
+import com.settle.compoundcontrol.level_select.impl.LevelInfo;
 import com.settle.compoundcontrol.level_select.view.LevelInfoTile;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
 public class MainActivity extends AppCompatActivity {
+
     private LevelInfoTile selected_tile;
-    private Logger logger = Logger.getLogger("LevelSelectActivity");
-
-
     private Button startButton;
     private TextView titleView;
     private TextView infoView;
@@ -69,7 +66,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        startLevel(levels[1]);
+        // Use for quick testing
+//        startLevel(levels[1]);
     }
 
     private void startLevel(LevelInfo info){
@@ -77,12 +75,12 @@ public class MainActivity extends AppCompatActivity {
         AssetManager manager = getAssets();
         try {
             InputStream is = manager.open(info.getTitle() + ".json");
-            LevelState state = LevelState.load(is);
+            LevelConfig state = LevelConfig.load(is);
             intent.putExtra("level", state);
             startActivity(intent);
             return;
         }catch(IOException e){
-            logger.info("Error: " + e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
         Toast toast = Toast.makeText(getBaseContext(), "Failed to load " + info.getTitle(), Toast.LENGTH_LONG);
         toast.show();
@@ -97,16 +95,15 @@ public class MainActivity extends AppCompatActivity {
                 JsonReader reader = new JsonReader(new InputStreamReader(is));
                 reader.setLenient(true);
                 reader.beginArray();
-                int levelNum = 0;
                 while (reader.hasNext()) {
-                    LevelInfo item = parseLevel(levelNum++, reader);
+                    LevelInfo item = parseLevel(reader);
                     levels.add(item);
                 }
                 reader.endArray();
                 reader.close();
                 is.close();
             } catch (IOException e) {
-                logger.info(e.getMessage());
+                throw new RuntimeException(e.getMessage());
             }
         this.levels = new LevelInfo[levels.size()];
         levels.toArray(this.levels);
@@ -124,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
         infoView.setText(info.getDescription());
     }
 
-    private LevelInfo parseLevel(int levelNum, JsonReader reader) throws IOException{
+    private LevelInfo parseLevel(JsonReader reader) throws IOException {
         reader.beginObject();
         String level_name = "", description = "";
 
@@ -139,10 +136,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 default:
                     String val = reader.nextString();
-                    logger.info("UNKNOWN : " + name + "->" + val);
+                    throw new RuntimeException("UNKNOWN : " + name + "->" + val);
             }
         }
         reader.endObject();
-        return new LevelInfo(levelNum, level_name, description);
+        return new LevelInfo(level_name, description);
     }
 }

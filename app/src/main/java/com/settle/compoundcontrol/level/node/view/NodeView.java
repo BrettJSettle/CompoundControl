@@ -7,30 +7,38 @@ import android.util.AttributeSet;
 import android.util.SparseArray;
 
 import com.settle.compoundcontrol.level.port.BidirectionalPortView;
+import com.settle.compoundcontrol.level.state.CommandNodeGameState;
+import com.settle.compoundcontrol.level.state.NodeGameState;
 
-public class NodeView extends ConstraintLayout {
-    private SparseArray<BidirectionalPortView> ports = new SparseArray<>();
+public abstract class NodeView extends ConstraintLayout {
+    protected SparseArray<BidirectionalPortView> ports = new SparseArray<>();
+    protected NodeGameState state;
 
     public NodeView(Context context) {
         super(context);
-        init();
+        init(CommandNodeGameState.EXAMPLE);
     }
 
     public NodeView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
+        init(CommandNodeGameState.EXAMPLE);
     }
 
-    public void init() {
+    public NodeView(Context context, NodeGameState state) {
+        super(context);
+        init(state);
+    }
+
+    // Update subviews with values from the state.
+    public abstract void update();
+
+    public void init(NodeGameState state) {
+        this.state = state;
         setBackgroundColor(Color.BLACK);
     }
 
-    public void read() {
-
-    }
-
-    public void write() {
-
+    public NodeGameState getState() {
+        return state;
     }
 
     public void setPort(int direction, BidirectionalPortView port) {
